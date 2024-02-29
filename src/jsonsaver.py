@@ -38,7 +38,7 @@ class JSONSaver(Saver):
 
         Аргументы:
         data (Dict): Данные о вакансии для добавления.
-        filename (str): Имя файла для добавления данных (по умолчанию 'vacancies.json').
+        filename (str): Имя файла для добавления данных (по умолчанию 'vacancies.json') .
         """
         vacancies = self.get_data(filename)
         vacancies.append(data)
