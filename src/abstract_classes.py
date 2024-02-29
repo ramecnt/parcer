@@ -6,9 +6,6 @@ class JobAPI(ABC):
     def get_vacancies(self, *args) -> None:
         """
         Абстрактный метод для получения списка вакансий.
-
-        Аргументы:
-        *args: Произвольные аргументы, которые могут использоваться для передачи данных запроса.
         """
         pass
 
@@ -16,22 +13,28 @@ class JobAPI(ABC):
     def get_top_vacancies(self, *args) -> None:
         """
         Абстрактный метод для получения списка лучших вакансий.
-
-        Аргументы:
-        *args: Произвольные аргументы, которые могут использоваться для передачи данных запроса.
         """
         pass
 
     @abstractmethod
     def save_vacancies(self, *args) -> None:
+        """
+        Абстрактный метод для сохранения вакансий.
+        """
         pass
 
 
 class Saver(ABC):
     @abstractmethod
     def save_data(self, *args) -> None:
+        """
+        Абстрактный метод для сохранения данных.
+        """
         pass
 
     @abstractmethod
     def get_data(self, *args) -> None:
+        """
+        Абстрактный метод для получения данных.
+        """
         pass

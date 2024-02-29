@@ -4,7 +4,6 @@ from src.abstract_classes import JobAPI
 from jsonsaver import JSONSaver
 from vacancies import Vacancy
 
-
 class SuperJobAPI(JobAPI):
     def __init__(self):
         self._top_vacancies: list = None  # Список лучших вакансий
@@ -24,6 +23,7 @@ class SuperJobAPI(JobAPI):
                 i['payment_to'] = i['payment_from']
 
     def _better_vacancies(self) -> None:
+        """Преобразовывает вакансии в удобный для пользователя вид"""
         vacancies = []
         for i in self._vacancies:
             v = Vacancy(i['profession'], i['link'], i['vacancyRichText'], i['payment_from'], i['payment_to'],
@@ -48,6 +48,7 @@ class SuperJobAPI(JobAPI):
         self._top_vacancies = temp[:amount]
 
     def save_vacancies(self, flag: bool = False, filename: str = 'vacancies.json') -> None:
+        """Сохраняет вакансии в файл."""
         saver = JSONSaver()
         if flag:
             data = self._top_vacancies
@@ -64,8 +65,3 @@ class SuperJobAPI(JobAPI):
     def top_vacancies(self) -> list:
         """Возвращает список лучших вакансий."""
         return self._top_vacancies
-
-
-c = SuperJobAPI()
-c.get_top_vacancies("Python")
-c.save_vacancies()

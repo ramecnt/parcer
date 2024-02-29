@@ -35,6 +35,7 @@ class HeadHunterAPI(JobAPI):
                     i['salary']['currency'] = currency
 
     def _better_vacancies(self):
+        """Преобразовывает вакансии в удобный для пользователя вид"""
         vacancies = []
         for i in self._vacancies:
             v = Vacancy(i['name'], i['url'], i['snippet']['responsibility'], i['salary']['from'],
@@ -61,6 +62,7 @@ class HeadHunterAPI(JobAPI):
         self._top_vacancies = temp[:amount]
 
     def save_vacancies(self, flag: bool = False, filename: str = 'vacancies.json') -> None:
+        """Сохраняет вакансии в файл."""
         saver = JSONSaver()
         if flag:
             data = self._top_vacancies
@@ -78,7 +80,3 @@ class HeadHunterAPI(JobAPI):
         """Возвращает список лучших вакансий."""
         return self._top_vacancies
 
-
-c: HeadHunterAPI = HeadHunterAPI()
-c.get_top_vacancies("Python")
-c.save_vacancies()
