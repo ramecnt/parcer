@@ -1,8 +1,8 @@
 import requests
-from implemented import convert_currency, is_supported_currency
+from src.implemented import convert_currency, is_supported_currency
 from src.abstract_classes import JobAPI
-from vacancies import Vacancy
-from jsonsaver import JSONSaver
+from src.vacancies import Vacancy
+from src.jsonsaver import JSONSaver
 
 
 class HeadHunterAPI(JobAPI):
@@ -61,7 +61,7 @@ class HeadHunterAPI(JobAPI):
         temp.sort(key=lambda x: x['salary_from'], reverse=True)
         self._top_vacancies = temp[:amount]
 
-    def save_vacancies(self, flag: bool = False, filename: str = 'vacancies.json') -> None:
+    def save_vacancies(self, flag: bool = False, filename: str = './data/vacancies.json') -> None:
         """Сохраняет вакансии в файл."""
         saver = JSONSaver()
         if flag:

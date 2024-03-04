@@ -2,8 +2,9 @@ import json
 from typing import List, Dict
 from src.abstract_classes import Saver
 
+
 class JSONSaver(Saver):
-    def save_data(self, data: List[Dict], filename: str = 'vacancies.json') -> None:
+    def save_data(self, data: List[Dict], filename: str = './data/vacancies.json') -> None:
         """
         Сохраняет данные в файл в формате JSON.
 
@@ -17,7 +18,7 @@ class JSONSaver(Saver):
         except Exception as e:
             print(f'Произошла ошибка при сохранении данных: {str(e)}')
 
-    def get_data(self, file: str = 'vacancies.json') -> List[Dict]:
+    def get_data(self, file: str = './data/vacancies.json') -> List[Dict]:
         """
         Получает данные из файла в формате JSON.
 
@@ -32,7 +33,7 @@ class JSONSaver(Saver):
             data: List[Dict] = json.load(file)
         return data
 
-    def add_vacancy(self, data: Dict, filename: str = 'vacancies.json') -> None:
+    def add_vacancy(self, data: Dict, filename: str = './data/vacancies.json') -> None:
         """
         Добавляет вакансию к существующим данным в файле.
 
@@ -44,7 +45,7 @@ class JSONSaver(Saver):
         vacancies.append(data)
         self.save_data(vacancies, filename)
 
-    def delete_vacancy(self, data: Dict, filename: str = 'vacancies.json') -> None:
+    def delete_vacancy(self, data: Dict, filename: str = './data/vacancies.json') -> None:
         """
         Удаляет вакансию из существующих данных в файле.
 

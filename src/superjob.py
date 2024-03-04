@@ -1,8 +1,8 @@
 import requests
-from implemented import api_key
+from src.implemented import api_key
 from src.abstract_classes import JobAPI
-from jsonsaver import JSONSaver
-from vacancies import Vacancy
+from src.jsonsaver import JSONSaver
+from src.vacancies import Vacancy
 
 class SuperJobAPI(JobAPI):
     def __init__(self):
@@ -47,7 +47,7 @@ class SuperJobAPI(JobAPI):
         temp.sort(key=lambda x: x['salary_from'], reverse=True)
         self._top_vacancies = temp[:amount]
 
-    def save_vacancies(self, flag: bool = False, filename: str = 'vacancies.json') -> None:
+    def save_vacancies(self, flag: bool = False, filename: str = './data/vacancies.json') -> None:
         """Сохраняет вакансии в файл."""
         saver = JSONSaver()
         if flag:

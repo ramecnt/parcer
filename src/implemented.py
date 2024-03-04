@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 api_key: str = os.getenv('API_KEY')
+api_key: str = "v3.r.138179656.7b192e806bf4c01a3010b2bc07e32d9f6c6cbdc1.b15760cf0b62f914bde6df847e6ef5ccd097f367"
 
 
 def get_all_exchange_rates(src: str) -> dict:
