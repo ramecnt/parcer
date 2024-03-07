@@ -1,5 +1,5 @@
 import json
-from typing import List, Dict
+from typing import List, Dict, Optional
 from src.abstract_classes import Saver
 
 
@@ -30,7 +30,7 @@ class JSONSaver(Saver):
         """
         file_name: str = f'{file}'
         with open(file_name, 'r') as file:
-            data: List[Dict] = json.load(file)
+            data: Optional[List[Dict]] = json.load(file)
         return data
 
     def add_vacancy(self, data: Dict, filename: str = './data/vacancies.json') -> None:
